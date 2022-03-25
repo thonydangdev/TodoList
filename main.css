@@ -1,0 +1,70 @@
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+body {
+  font-family: 'Muli', sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  color:#000;
+}
+
+.title{
+  font-size:200px;
+  margin:100px 0;
+  color:#d161ff;
+  opacity:0.3;
+}
+.guide{
+  position:absolute;
+  top:350px;
+}
+.taskBox,
+#inputContent{
+  min-width: 40%;
+  font-size: 24px;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+}
+#inputContent{
+  margin-bottom:20px;
+  padding: 20px 24px;
+
+}
+#inputContent:focus{
+  outline:2px solid #d161ff;
+}
+.taskBox{
+  overflow: hidden;
+  background-color:#fff;
+}
+.taskItem{
+  color:#000;
+  padding: 14px 20px;
+  margin:8px;
+  user-select: none;
+  cursor: pointer;
+}
+.taskItem + .taskItem{
+  border-top:1px solid #999;
+}
+.taskItem.done{
+  text-decoration: line-through;
+  color:rgba(0,0,0,0.3);
+}
+.taskItem:hover{
+  opacity:0.7;
+}
+
+
+
+
