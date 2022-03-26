@@ -1,5 +1,7 @@
 const input = document.querySelector('#inputContent')
 const taskBox = document.querySelector('.taskBox')
+const typeCurrent = document.querySelector('span.typeFilter')
+const typesChange = document.querySelectorAll('#dropdown-select div')
 // localStorage.clear()
 function createStorage(key) {
     const store = JSON.parse(localStorage.getItem(key)) ?? []
@@ -42,6 +44,7 @@ input.addEventListener('keydown', (e) => {
                 alert('This task still exists')
             } else {
                 addNewTask(e.target.value)
+                taskBox.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
                 e.target.value = ''
             }
 
@@ -97,3 +100,42 @@ function createTask(text, isDone) {
     })
     return li
 }
+typesChange.forEach(typeChange => {
+    typeChange.addEventListener('click', (e) => {
+        e.preventDefault()
+        typeCurrent.innerText = e.target.innerText
+        filterTypes(e.target.dataset.type)
+
+
+    })
+})
+function filterTypes(type) {
+    switch (type) {
+        case 'completed':
+            document.querySelectorAll('li.taskItem').forEach(taskItem => {
+                if (!taskItem.classList.contains('done')) {
+                    taskItem.style.display = 'none'
+                } else {
+                    taskItem.style.display = 'block'
+                }
+            })
+            break;
+        case 'uncompleted':
+            document.querySelectorAll('li.taskItem').forEach(taskItem => {
+                if (taskItem.classList.contains('done')) {
+                    taskItem.style.display = 'none'
+                } else {
+                    taskItem.style.display = 'block'
+                }
+            })
+            break;
+        case 'all':
+            document.querySelectorAll('li.taskItem').forEach(taskItem => {
+                taskItem.style.display = 'block'
+            })
+            break;
+        default:
+
+    }
+}
+
